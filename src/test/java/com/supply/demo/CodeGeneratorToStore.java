@@ -35,11 +35,6 @@ import freemarker.template.TemplateExceptionHandler;
  */
 public class CodeGeneratorToStore {
 
-    // JDBC配置，请修改为你项目的实际配置
-    /*private static final String JDBC_URL = "jdbc:mysql://tustorew.rwlb.rds.aliyuncs.com:3306/api_activity?useSSL=false";
-    private static final String JDBC_USERNAME = "tustore_dev";
-    private static final String JDBC_PASSWORD = "Access(!!";*/
-
     private static final String JDBC_URL = "jdbc:mysql://192.168.1.41:3306/scm_cms?useSSL=false";
     private static final String JDBC_USERNAME = "root";
     private static final String JDBC_PASSWORD = "root";
