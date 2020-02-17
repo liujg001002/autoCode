@@ -1,0 +1,101 @@
+name: tudian
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  port: 8088
+spring:
+  #kafka相关配置 参考https://blog.52itstyle.com/archives/2868/
+#  kafka:
+#     bootstrap-servers: 192.168.1.180:9092
+#     #设置一个默认组
+#     consumer.group-id: 0
+#     #key-value序列化反序列化
+#     consumer:
+#        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#     producer:
+#        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#        value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#        #每次批量发送消息的数量
+#        batch-size: 65536
+#        buffer-memory: 524288
+  mvc.static-path-pattern: classspath:/static/,classspath:/resources/ #静态资源访问路径
+  servlet.multipart.max-file-size: 10MB #设置上传文件限制
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+  datasource: #连接池配置
+    db1:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://tustorew.rwlb.rds.aliyuncs.com:3306/tostore?characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false
+      username: tustore_dev
+      password: Access(!!
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000 #链接等待超时时间
+      timeBetweenEvictionRunsMillis: 60000 #配置隔多久进行一次检测(检测可以关闭的空闲链接)
+      minEvictableIdleTimeMillis: 300000 #配置连接在池中的最小生存时间
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true #打开PSCache，并且指定每个连接上PSCache的大小
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat,wall,slf4j #配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000 # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    db2:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://tustorew.rwlb.rds.aliyuncs.com:3306/tustore_account?characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false
+      username: tustore_account
+      password: Access(!!
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000 #链接等待超时时间
+      timeBetweenEvictionRunsMillis: 60000 #配置隔多久进行一次检测(检测可以关闭的空闲链接)
+      minEvictableIdleTimeMillis: 300000 #配置连接在池中的最小生存时间
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true #打开PSCache，并且指定每个连接上PSCache的大小
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat,wall,slf4j #配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000 # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+  redis: #redis
+    host: 127.0.0.1
+    port: 6379
+    timeout: 0
+    password:
+#  rabbitmq: #rabbitmq
+#    host: 127.0.0.1
+#    port: 5672
+#    username: root
+#    password: root
+#  mail: #邮件设置
+#    protocol: smtp
+#    host: smtp.163.com
+#    port: 25
+#    smtpAuth: true
+#    smtpStarttlsEnable: true
+#    smtpSslTrust: smtp.163.com
+#    username: reyenxu@163.com
+#    password: rcx19940315
+
+#hystrix:
+#   timeoutInMillions: 3000
+
+#zookeeper.address
+#zookeeper.address = 192.168.1.180:2181
+
+logging.level: #日志级别
+  com.yintu.supply: DEBUG 
+pagehelper: #分页插件配置
+  helperDialect: mysql
+  reasonable: true
+  params: count=countSql
+  page-size-zero: true
+mapper.mappers: com.yintu.supply.core.universal.Mapper #通用mapper的自己的实现类
