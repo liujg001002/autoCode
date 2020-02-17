@@ -2,9 +2,6 @@ package com.yintu.supply;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
-import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.EnableAsync;
 
@@ -14,9 +11,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 //		DataSourceTransactionManagerAutoConfiguration.class, HibernateJpaAutoConfiguration.class })
 @EnableAsync
 @PropertySource("classpath:application.yml")
-public class YintuApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(YintuApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 }
